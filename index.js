@@ -33,6 +33,16 @@ function validateCreditCard(ccNumberNoDashes) {
             for (var i = 0; i < ccNumberNoDashes.length; i++) {
                 obj[ccNumberNoDashes[i]] = true;
             }
+            
+        //answe2
+            var date_diff_indays = function (date1, date2) {
+            dt1 = new Date(date1);
+            dt2 = new Date(date2);
+            return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
+        }
+        console.log(date_diff_indays('04/02/2014', '11/04/2014'));
+        console.log(date_diff_indays('12/02/2014', '11/04/2014'));
+
             if (Object.keys(obj).length < 2) {
                 return false;
             }
@@ -60,4 +70,38 @@ function validateCreditCard(ccNumberNoDashes) {
         console.log(validateCreditCard('a923-3211-9c01-1112')); //false
         console.log(validateCreditCard('4444-4444-4444-4444')); //false
         console.log(validateCreditCard('1211-1111-1111-1112')); //true
-// 
+// answer3
+   function three_digit_armstrong_number() {
+            for (var i = 1; i < 10; ++i) {
+                for (var j = 0; j < 10; ++j) {
+                    for (var k = 0; k < 10; ++k) {
+                        var pow = (Math.pow(i, 3) + Math.pow(j, 3) + Math.pow(k, 3));
+                        var plus = (i * 100 + j * 10 + k);
+                        if (pow == plus) {
+                            console.log(pow);
+                        }
+                    }
+                }
+            }
+        }
+        three_digit_armstrong_number();
+
+//answer3
+function lcm_two_numbers(x, y) {
+            if ((typeof x !== 'number') || (typeof y !== 'number'))
+                return false;
+            return (!x || !y) ? 0 : Math.abs((x * y) / gcd_two_numbers(x, y));
+        }
+
+        function gcd_two_numbers(x, y) {
+            x = Math.abs(x);
+            y = Math.abs(y);
+            while (y) {
+                var t = y;
+                y = x % y;
+                x = t;
+            }
+            return x;
+        }
+        console.log(lcm_two_numbers(3, 15));
+        console.log(lcm_two_numbers(10, 15));
